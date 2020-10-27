@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="text-center">Mi carrito</h1>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Articulo</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let purchase of cart">
+                        <td>
+                            <div class="d-flex">
+                                <!-- <img src="../assets/img/{{purchase.product.id}}.jpg" class="card-img-top" [alt]="purchase.product.name"> -->
+                                <img src="../assets/img/1.jpg" class="card-img-top cardProduct" [alt]="purchase.quantity" /> {{purchase.productId}} nombre de producto
+                            </div>
+                        </td>
+                        <td>$14,55</td>
+                        <td>{{purchase.quantity}}</td>
+                        <td>{{purchase.quantity * 3.5 | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
