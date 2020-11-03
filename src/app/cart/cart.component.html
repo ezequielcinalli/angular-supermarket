@@ -4,7 +4,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
             <table class="table">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr class="text-center">
                         <th scope="col">Articulo</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Cantidad</th>
@@ -12,19 +12,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let purchase of cart">
-                        <td>
-                            <div class="d-flex">
-                                <!-- <img src="../assets/img/{{purchase.product.id}}.jpg" class="card-img-top" [alt]="purchase.product.name"> -->
-                                <img src="../assets/img/1.jpg" class="card-img-top cardProduct" [alt]="purchase.quantity" /> {{purchase.productId}} nombre de producto
-                            </div>
+                    <tr *ngFor="let purchase of (cartList$ | async)" class="text-center">
+                        <td class="align-middle">
+                            <img src="../assets/img/1.jpg" class="card-img-top cardProduct" /> {{purchase.name}}
                         </td>
-                        <td>$14,55</td>
-                        <td>{{purchase.quantity}}</td>
-                        <td>{{purchase.quantity * 3.5 | currency}}</td>
+                        <td class="align-middle">{{purchase.price | currency}}</td>
+                        <td class="align-middle">{{purchase.quantity}}</td>
+                        <td class="align-middle">{{purchase.price * purchase.quantity | currency}}</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                <p class="h2 mr-4">Total {{total | currency}}</p>
+                <!-- <button class="btn btn-primary">Finalizar compra</button> -->
+            </div>
+
         </div>
     </div>
 </div>

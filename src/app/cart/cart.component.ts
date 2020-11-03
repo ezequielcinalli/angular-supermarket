@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PURCHASES } from '../mock-purchases';
-import { Purchase } from '../Purchase';
+import { Observable } from 'rxjs';
+import { CartService } from '../cart.service';
+import { Product } from '../Product';
 
 @Component({
   selector: 'app-cart',
@@ -9,8 +10,13 @@ import { Purchase } from '../Purchase';
 })
 export class CartComponent implements OnInit {
 
-  cart: Purchase[] = PURCHASES;
-  constructor() { }
+  cartList$: Observable<Product[]>;
+  public total:number;
+  
+  constructor(private cart: CartService) { 
+    this.cartList$ = cart.cartList.asObservable();
+    this.total = cart.total;
+  }
 
   ngOnInit(): void {
   }

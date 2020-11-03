@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -11,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegistryComponent } from './registry/registry.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalMessageComponent } from './modal-message/modal-message.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +25,16 @@ import { RegistryComponent } from './registry/registry.component';
     HomeComponent,
     AboutComponent,
     LoginComponent,
-    RegistryComponent
+    RegistryComponent,
+    InputIntegerComponent,
+    ModalMessageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

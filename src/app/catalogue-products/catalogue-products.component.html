@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="d-none d-md-block col-md-3 col-lg-2 border">
+        <!-- <div class="d-none d-md-block col-md-3 col-lg-2 border">
             <p class="h2">Comprar por</p>
             <div class="dropdown-divider"></div>
             <p class="h4">Subcategoria</p>
@@ -15,12 +15,14 @@
             <a class="text-body d-block" href="">Marca 2</a>
             <a class="text-body d-block" href="">Marca 3</a>
             <a class="text-body d-block" href="">Marca 4</a>
-        </div>
-        <div class="col-md-9 col-lg-10 d-flex">
+        </div> -->
+        <div class="col-12 d-flex">
+            <!-- <div class="col-md-9 col-lg-10 d-flex"> -->
             <div class="container d-flex flex-wrap">
                 <div *ngIf="!products" class="h1 text-center mx-auto">No hay productos para la categoria filtrada!</div>
                 <div *ngFor="let product of products" class="card mx-2 mb-2 cardProduct">
-                    <img src="../assets/img/{{product.id}}.jpg" class="card-img-top" [alt]="product.name">
+                    <!-- <img src="../assets/img/{{product.id}}.jpg" class="card-img-top" [alt]="product.name"> -->
+                    <img src="../assets/img/1.jpg" class="card-img-top" [alt]="product.name">
                     <div class="card-body">
                         <p class="h5 card-title">{{product.name}}</p>
                         <div>
@@ -28,12 +30,10 @@
                             <p class="h5 font-weight-bold text-danger">{{product.price | currency}}</p>
                         </div>
                         <div *ngIf="product.stock>0" class="d-flex justify-content-between">
-                            <div class="d-flex align-middle">
-                                <button class="btn btn-primary btn-sm" (click)="upQuantityCart()">-</button>
-                                <input class="inputQuantityCart" type="text" [value]="product.stock" />
-                                <button class="btn btn-primary btn-sm" (click)="downQuantityCart()">+</button>
-                            </div>
-                            <button class="btn btn-primary btn-sm" (click)="addToCart()"><fa-icon [icon]="faCartArrowDown" class=""></fa-icon></button>
+                            <app-input-integer [(quantity)]="product.quantity" [max]="product.stock" *ngIf="product.stock" (maxReached)="maxReached($event)"></app-input-integer>
+                            <button class="btn btn-primary btn-sm" (click)="addToCart(product)">
+                                <fa-icon [icon]="faCartArrowDown" class=""></fa-icon>
+                            </button>
                         </div>
                         <span *ngIf="product.stock<=0" class="badge badge-warning">NO DISPONIBLE</span>
                     </div>
